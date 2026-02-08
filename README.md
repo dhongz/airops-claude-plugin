@@ -57,18 +57,19 @@ The plugin's `.mcp.json` connects to both MCP servers:
 
 ```json
 {
-  "mcpServers": {
-    "airops": {
-      "type": "http",
-      "url": "https://app.airops.com/mcp"
-    },
-    "semrush": {
-      "type": "http",
-      "url": "https://mcp.semrush.com/v1/mcp"
-    }
+  "airops": {
+    "type": "http",
+    "url": "https://app.airops.com/mcp"
+  },
+  "semrush": {
+    "type": "http",
+    "url": "https://mcp.semrush.com/v1/mcp"
   }
 }
 ```
+
+This is the **plugin** `.mcp.json` format (flat, no `mcpServers` wrapper). If using
+as a standalone project config instead of a plugin, wrap in `{ "mcpServers": { ... } }`.
 
 When the host loads the plugin, it connects to both MCPs. Each authenticates via
 OAuth on first use — you'll be redirected to the respective login pages.
