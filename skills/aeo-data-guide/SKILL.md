@@ -95,6 +95,23 @@ Don't guess. A quick clarifying question saves a wrong analysis.
 
 ## Reading AI Search Numbers
 
+### Mentions first, citations second
+
+**Mention rate is the primary metric for AI search visibility.** It tells you
+whether AI is actually talking about the brand. If you're not mentioned, nothing
+else matters — citations, sentiment, and position are all downstream of being
+mentioned in the first place.
+
+Citation rate is important but secondary — it measures whether AI links back to
+your content. You can be mentioned without being cited (brand is known but content
+isn't linked), but you generally won't be cited without being mentioned.
+
+When reporting or analyzing:
+- Lead with mention rate and share of voice
+- Follow with citation rate as supporting context
+- Don't fixate on citations alone — a brand that's mentioned everywhere but cited
+  rarely has a different problem than one that's not mentioned at all
+
 ### Metric combinations that tell a story
 
 | Pattern | What it means | Action |
@@ -146,6 +163,44 @@ what's happening, the others show why.
 3. **Drill into why** — use `get_page_prompts` to see which AI prompts cite the page. Are those prompts losing volume? Are competitors getting cited instead?
 4. **Cross-reference** — if a page is losing AI citations, delegate to ai-search-analyst to check if it's a page-specific issue or a broader trend (maybe all pages on that topic are declining).
 5. **Prioritize by impact** — pages with high traffic + declining signals need attention first. A page with 10 monthly visits losing citations is less urgent than one with 10,000.
+
+---
+
+## Refresh vs Create (Critical Guardrail)
+
+When you find a prompt or keyword opportunity (high volume, low mention rate),
+**always check if a page already exists before suggesting action.**
+
+### The rule
+
+1. Identify the keyword or topic from the prompt opportunity
+2. Query `list_pages` — search by keyword, URL, or folder to see if the brand
+   already has a page targeting it
+3. **If a page exists** → recommend refreshing/optimizing that page. Don't create
+   a competing page.
+4. **If no page exists** → recommend creating new content for that keyword.
+
+### Why this matters
+
+Suggesting "create a blog post about X" when the brand already has a page about X
+leads to duplicate content competing with itself. The existing page might just need
+a refresh — updated stats, better structure for AI citation, stronger authority signals.
+
+### How to check
+
+- `list_pages` filtered by `primary_keyword` matching the prompt's keyword
+- `list_pages` filtered by `url` containing relevant terms
+- If unsure, search broadly by folder (e.g. `/blog/`) and scan for related content
+
+### What to recommend
+
+| Situation | Recommendation |
+|-----------|---------------|
+| Page exists, performing well | Leave it alone — focus effort elsewhere |
+| Page exists, losing citations or traffic | Refresh: update content, add current data, optimize for AI |
+| Page exists, no AI citations at all | Optimize: restructure for AI citability (clear answers, authoritative framing) |
+| No page exists, high volume keyword | Create: new content targeting this keyword |
+| No page exists, low volume keyword | Deprioritize unless strategically important |
 
 ---
 
