@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "airops",
+      "name": "AirOps",
       "source": "./",
       "description": "Content marketing playbooks with brand-aware AI agents. Uses AirOps MCP for live brand context and AEO data, Semrush MCP for SEO intelligence.",
       "version": "1.0.0",
